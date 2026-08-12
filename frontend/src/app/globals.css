@@ -1,0 +1,132 @@
+@import "tailwindcss";
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource/fraunces/600.css";
+@import "@fontsource/fraunces/600-italic.css";
+@import "@fontsource/fraunces/700.css";
+@import "@fontsource/plus-jakarta-sans/400.css";
+@import "@fontsource/plus-jakarta-sans/500.css";
+@import "@fontsource/plus-jakarta-sans/600.css";
+@import "@fontsource/plus-jakarta-sans/700.css";
+@import "@fontsource/plus-jakarta-sans/800.css";
+
+/* ---------------------------------------------------------------
+   DESIGN TOKENS
+   This is the single source of truth for the visual identity.
+   Swap these values later to re-skin the site for a specific
+   school without touching component code.
+----------------------------------------------------------------*/
+:root {
+  /* Neutrals */
+  --color-cream: #fbf6ec;         /* page background */
+  --color-cream-deep: #f3ecdb;    /* alternate section background */
+  --color-card: #fffdf8;          /* card surfaces */
+  --color-line: #e6dac0;          /* hairline borders */
+  --color-ink: #241f18;           /* primary text */
+  --color-ink-soft: #6c6152;      /* secondary text */
+  --color-ink-faint: #9a8f7c;     /* tertiary / placeholder text */
+
+  /* Brand accents */
+  --color-marigold: #e2a13a;      /* primary accent — warmth, CTAs */
+  --color-marigold-dark: #c07f22;
+  --color-marigold-tint: #f8e6c4;
+  --color-peacock: #285c52;       /* secondary accent — trust, depth */
+  --color-peacock-dark: #16382f;
+  --color-peacock-tint: #dfe9e4;
+  --color-berry: #bd5a70;         /* tertiary accent — used sparingly */
+  --color-berry-tint: #f3dde2;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+
+  --shadow-soft: 0 20px 45px -25px rgba(36, 31, 24, 0.35);
+  --shadow-card: 0 12px 30px -18px rgba(36, 31, 24, 0.28);
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-deep: var(--color-cream-deep);
+  --color-card: var(--color-card);
+  --color-line: var(--color-line);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-marigold: var(--color-marigold);
+  --color-marigold-dark: var(--color-marigold-dark);
+  --color-marigold-tint: var(--color-marigold-tint);
+  --color-peacock: var(--color-peacock);
+  --color-peacock-dark: var(--color-peacock-dark);
+  --color-peacock-tint: var(--color-peacock-tint);
+  --color-berry: var(--color-berry);
+  --color-berry-tint: var(--color-berry-tint);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --animate-float-slow: float 7s ease-in-out infinite;
+  --animate-float-slower: float 10s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-marigold-tint);
+  color: var(--color-ink);
+}
+
+/* Visible, tasteful keyboard focus ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-peacock);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Hand-drawn style underline / squiggle accent used sparingly under
+   emphasised words in headings — the site's signature detail. */
+.squiggle-underline {
+  position: relative;
+  white-space: nowrap;
+}
+.squiggle-underline svg {
+  position: absolute;
+  left: 0;
+  bottom: -0.14em;
+  width: 100%;
+  height: 0.32em;
+}
